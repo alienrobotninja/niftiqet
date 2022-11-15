@@ -73,15 +73,16 @@ export const useStore = defineStore('main', {
         this.niftyStore = data.store
       })
     },
-    async fetchMetaData(storeId) {
+    async fetchMetaData() {
       await this.setupWallet().then(async () => {
         const query = nftMetadata
         const variables = {
-          contractId: storeId
+          ownerId:  `${this.details.accountId}`,
         }
         await this.$nuxt.$graphql.default.request(query, variables)
           .then(res => {
-            this.metadata = res.mb_views_nft_metadata;
+            console.log('res is', res)
+            this.metadata = res.nft_metadata;
           })
 
       })

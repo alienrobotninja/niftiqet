@@ -31,26 +31,32 @@ export const nftTokens = gql`
 `
 
 export const nftMetadata = gql`
-    query FetchNFTMetadata($contractId: String!) {
-      mb_views_nft_metadata(
-        where: {nft_contract_id: {_eq: $contractId}}
+    query FetchNFTMetadata($ownerId: String!) {
+      nft_metadata(
+        where: {nft_contract: {owner_id: {_eq:  $ownerId}}}
       ) {
-        extra
-        media
-        nft_contract_id
-        nft_contract_name
-        title
-        description
-        id
-        nft_contract_icon
-        nft_contract_created_at
-        nft_contract_is_mintbase
-        nft_contract_owner_id
-        nft_contract_reference
-        nft_contract_spec
-        nft_contract_symbol
-        reference_blob
-      }
+          base_uri
+          description
+          extra
+          id
+          media
+          media_hash
+          nft_contract {
+            name
+            owner_id
+            id
+            reference
+          }
+          reference_blob
+          reference
+          title
+          nft_contract_id
+          nft_contracts {
+            reference
+            owner_id
+            name
+          }
+        }
   }
 `
 

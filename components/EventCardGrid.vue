@@ -46,7 +46,7 @@ export default {
   },
   async mounted() {
     // await console.log('props',this.storeId)
-    await this.store.fetchMetaData(`${this.storeId}`)
+    await this.store.fetchMetaData()
   }
 }
 

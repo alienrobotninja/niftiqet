@@ -14,7 +14,7 @@
     <main>
       <section class="home--body">
         <div class="cto--container container px-4 min-h-screen">
-          <event-card-grid v-for="aStore in stores" :key="aStore.nft_contracts.id" :store-id="aStore.nft_contracts.id" />
+          <event-card-grid />
           <div class="flex pagination justify-center mt-16">
             <div class="btn-group">
               <button class="btn">Previous</button>
